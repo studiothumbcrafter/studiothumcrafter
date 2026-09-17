@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { ArrowDownRight, Image, Layers3, Menu, Sparkles, X } from "lucide-react";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
+
+import { sendInquiry } from "@/lib/contact.functions";
 
 import avatar from "@/assets/thumbcrafter-avatar.png";
 import setup from "@/assets/concept-setup.jpg";
@@ -48,19 +51,26 @@ const skills = ["YouTube thumbnail design", "Gaming thumbnail design", "Visual c
 function StudioPortfolio() {
   const [filter, setFilter] = useState<Category>("All");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const send = useServerFn(sendInquiry);
   const visibleProjects = useMemo(
     () => (filter === "All" ? projects : projects.filter((project) => project.category === filter)),
     [filter],
   );
 
-  function submitInquiry(event: FormEvent<HTMLFormElement>) {
+  async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const subject = encodeURIComponent(`Thumbnail inquiry from ${String(data.get("name") || "a creator")}`);
-    const body = encodeURIComponent(
-      `Name: ${String(data.get("name") || "")}\nEmail: ${String(data.get("email") || "")}\nVideo details: ${String(data.get("details") || "")}\n\nRequirements:\n${String(data.get("requirements") || "")}`,
-    );
-    window.location.href = `mailto:studiothumbcrafter@gmail.com?subject=${subject}&body=${body}`;
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setFormStatus("sending");
+    try {
+      await send({ data: formData });
+      setFormStatus("success");
+      form.reset();
+    } catch {
+      setFormStatus("error");
+    }
   }
 
   return (
@@ -203,7 +213,19 @@ function StudioPortfolio() {
                 <Field label="Email"><input required name="email" type="email" autoComplete="email" placeholder="YOU@EMAIL.COM" className="field" /></Field>
                 <div className="sm:col-span-2"><Field label="YouTube / video details"><input required name="details" placeholder="VIDEO TOPIC OR CHANNEL LINK" className="field" /></Field></div>
                 <div className="sm:col-span-2"><Field label="Project requirements"><textarea required name="requirements" rows={4} placeholder="WHAT SHOULD THE THUMBNAIL COMMUNICATE?" className="field resize-none" /></Field></div>
-                <Button type="submit" variant="signal" className="sm:col-span-2">Send Inquiry <ArrowDownRight size={20} /></Button>
+                <Button type="submit" variant="signal" disabled={formStatus === "sending"} className="sm:col-span-2">
+                  {formStatus === "sending" ? "Sending..." : "Send Inquiry"} <ArrowDownRight size={20} />
+                </Button>
+                {formStatus === "success" && (
+                  <p className="sm:col-span-2 border border-signal/50 bg-signal/10 px-4 py-3 font-mono text-xs text-signal">
+                    Inquiry sent. I’ll reply to your email soon.
+                  </p>
+                )}
+                {formStatus === "error" && (
+                  <p className="sm:col-span-2 border border-red-500/50 bg-red-500/10 px-4 py-3 font-mono text-xs text-red-400">
+                    Couldn’t send. Make sure the EmailJS keys are set, or email me directly at studiothumbcrafter@gmail.com.
+                  </p>
+                )}
               </div>
             </form>
           </div>
