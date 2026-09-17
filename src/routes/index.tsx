@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import emailjs from "@emailjs/browser";
 import { ArrowDownRight, Image, Layers3, Menu, Sparkles, X } from "lucide-react";
-import { useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useMemo, useState, type FormEvent, type ReactNode } from "react";
+
+import { sendInquiry } from "@/lib/contact.functions";
 
 import avatar from "@/assets/thumbcrafter-avatar.png";
 import setup from "@/assets/concept-setup.jpg";
