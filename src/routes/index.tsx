@@ -206,7 +206,7 @@ function StudioPortfolio() {
               <p className="mt-7 max-w-md text-lg leading-relaxed">Share the video idea, audience, and visual direction. I’ll reply by email.</p>
               <a href="mailto:studiothumbcrafter@gmail.com" className="mt-10 inline-block break-all border-b-2 border-ink pb-1 font-display text-2xl sm:text-3xl">studiothumbcrafter@gmail.com</a>
             </div>
-            <form ref={formRef} onSubmit={submitInquiry} className="relative bg-ink p-7 text-paper shadow-2xl sm:p-10">
+            <form onSubmit={submitInquiry} className="relative bg-ink p-7 text-paper shadow-2xl sm:p-10">
               <div className="absolute right-0 top-0 size-16 bg-signal" aria-hidden="true" />
               <div className="grid gap-7 sm:grid-cols-2">
                 <Field label="Name"><input required name="name" autoComplete="name" placeholder="YOUR NAME" className="field" /></Field>
