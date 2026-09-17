@@ -52,6 +52,7 @@ function StudioPortfolio() {
   const [filter, setFilter] = useState<Category>("All");
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const send = useServerFn(sendInquiry);
   const visibleProjects = useMemo(
     () => (filter === "All" ? projects : projects.filter((project) => project.category === filter)),
     [filter],
@@ -64,7 +65,7 @@ function StudioPortfolio() {
 
     setFormStatus("sending");
     try {
-      await sendInquiry(formData);
+      await send({ data: formData });
       setFormStatus("success");
       form.reset();
     } catch {
