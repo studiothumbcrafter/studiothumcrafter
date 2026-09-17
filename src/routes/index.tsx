@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { ArrowDownRight, Image, Layers3, Menu, Sparkles, X } from "lucide-react";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 
