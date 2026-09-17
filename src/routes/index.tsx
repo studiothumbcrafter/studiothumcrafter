@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight, Image, Layers3, Menu, Sparkles, X } from "lucide-react";
-import { useMemo, useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 
 import avatar from "@/assets/thumbcrafter-avatar.png";
 import setup from "@/assets/concept-setup.jpg";
@@ -224,6 +224,6 @@ function StudioPortfolio() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return <label className="block"><span className="mb-2 block font-mono text-[10px] uppercase text-paper/50">{label}</span>{children}</label>;
 }

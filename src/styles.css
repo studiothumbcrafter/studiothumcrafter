@@ -172,6 +172,19 @@
 
 @utility animate-rise-in { animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
 @utility animate-clip-in { animation: clip-in 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@utility field {
+  width: 100%;
+  border-width: 0 0 1px 0;
+  border-color: color-mix(in oklab, var(--paper) 24%, transparent);
+  background: transparent;
+  padding-block: 0.65rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--paper);
+  outline: none;
+  &::placeholder { color: color-mix(in oklab, var(--paper) 30%, transparent); }
+  &:focus { border-color: var(--signal); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
