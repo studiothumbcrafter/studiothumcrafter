@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 
 export const sendInquiry = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => {
+  .validator((data: unknown) => {
     if (!(data instanceof FormData)) {
       throw new Error("Expected FormData");
     }
@@ -23,6 +23,7 @@ export const sendInquiry = createServerFn({ method: "POST" })
     const privateKey = process.env["EMAILJS_PRIVATE_KEY"];
 
     if (!serviceId || !templateId || !publicKey || !privateKey) {
+      console.error("EmailJS missing configuration");
       throw new Error("EmailJS is not configured");
     }
 
@@ -44,6 +45,8 @@ export const sendInquiry = createServerFn({ method: "POST" })
     });
 
     if (!response.ok) {
+      const text = await response.text().catch(() => "unknown");
+      console.error("EmailJS error:", response.status, text);
       throw new Error("EmailJS request failed");
     }
 
