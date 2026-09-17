@@ -51,7 +51,6 @@ function StudioPortfolio() {
   const [filter, setFilter] = useState<Category>("All");
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const formRef = useRef<HTMLFormElement>(null);
   const visibleProjects = useMemo(
     () => (filter === "All" ? projects : projects.filter((project) => project.category === filter)),
     [filter],
@@ -60,19 +59,11 @@ function StudioPortfolio() {
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-
-    const serviceId = import.meta.env["VITE_EMAILJS_SERVICE_ID"];
-    const templateId = import.meta.env["VITE_EMAILJS_TEMPLATE_ID"];
-    const publicKey = import.meta.env["VITE_EMAILJS_PUBLIC_KEY"];
-
-    if (!serviceId || !templateId || !publicKey) {
-      setFormStatus("error");
-      return;
-    }
+    const formData = new FormData(form);
 
     setFormStatus("sending");
     try {
-      await emailjs.sendForm(serviceId, templateId, form, publicKey);
+      await sendInquiry(formData);
       setFormStatus("success");
       form.reset();
     } catch {
