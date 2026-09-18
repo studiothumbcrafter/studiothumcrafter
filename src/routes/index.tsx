@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { ArrowDownRight, Image, Layers3, Menu, Sparkles, X } from "lucide-react";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 
-import { sendInquiry } from "@/lib/contact.functions";
+import { getEmailJSConfig } from "@/lib/contact.functions";
 
 import avatar from "@/assets/thumbcrafter-avatar.png";
 import setup from "@/assets/concept-setup.jpg";
@@ -52,7 +52,7 @@ function StudioPortfolio() {
   const [filter, setFilter] = useState<Category>("All");
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const send = useServerFn(sendInquiry);
+  const loadConfig = useServerFn(getEmailJSConfig);
   const visibleProjects = useMemo(
     () => (filter === "All" ? projects : projects.filter((project) => project.category === filter)),
     [filter],
@@ -61,11 +61,16 @@ function StudioPortfolio() {
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const formData = new FormData(form);
 
     setFormStatus("sending");
     try {
-      await send({ data: formData });
+      const [{ default: emailjs }, config] = await Promise.all([
+        import("@emailjs/browser"),
+        loadConfig(),
+      ]);
+      await emailjs.sendForm(config.serviceId, config.templateId, form, {
+        publicKey: config.publicKey,
+      });
       setFormStatus("success");
       form.reset();
     } catch {
