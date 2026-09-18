@@ -61,6 +61,11 @@ function StudioPortfolio() {
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const details = String(data.get("details") ?? "");
+    const requirements = String(data.get("requirements") ?? "");
 
     setFormStatus("sending");
     try {
@@ -68,9 +73,18 @@ function StudioPortfolio() {
         import("@emailjs/browser"),
         loadConfig(),
       ]);
-      await emailjs.sendForm(config.serviceId, config.templateId, form, {
-        publicKey: config.publicKey,
-      });
+      await emailjs.send(
+        config.serviceId,
+        config.templateId,
+        {
+          name,
+          email,
+          details,
+          requirements,
+          message: `Name: ${name}\nEmail: ${email}\nVideo details: ${details}\nRequirements: ${requirements}`,
+        },
+        { publicKey: config.publicKey },
+      );
       setFormStatus("success");
       form.reset();
     } catch {
