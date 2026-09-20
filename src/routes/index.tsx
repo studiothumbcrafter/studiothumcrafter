@@ -6,7 +6,6 @@ import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 import { getEmailJSConfig } from "@/lib/contact.functions";
 import { submitInquiry as saveInquiry } from "@/lib/inquiries.functions";
 
-import avatar from "@/assets/thumbcrafter-avatar.png";
 import thumbnail1Asset from "@/assets/portfolio-thumbnail-1.png.asset.json";
 import thumbnail2Asset from "@/assets/portfolio-thumbnail-2.png.asset.json";
 import thumbnail3Asset from "@/assets/portfolio-thumbnail-3.png.asset.json";
@@ -143,10 +142,6 @@ function StudioPortfolio() {
             </div>
 
             <div className="animate-clip-in relative h-[470px] sm:h-[560px] lg:col-span-5">
-              <div className="absolute right-1 top-0 z-20 w-40 rotate-3 border-4 border-signal bg-signal p-1 shadow-2xl sm:w-52">
-                <img src={avatar} alt="Graphic avatar for Studio Thumbcrafter" width={768} height={768} className="aspect-square w-full object-cover" />
-                <div className="bg-ink px-3 py-2 font-mono text-[9px] uppercase text-paper">Designer profile / no photo supplied</div>
-              </div>
               <div className="absolute bottom-10 left-0 z-10 w-[78%] -rotate-6 border-8 border-chalk bg-chalk shadow-2xl">
                 <img src={thumbnail6Asset.url} alt="Minecraft adventure thumbnail from the Studio Thumbcrafter portfolio" width={1280} height={720} className="aspect-video w-full object-cover" />
               </div>
