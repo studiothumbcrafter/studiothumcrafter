@@ -142,6 +142,39 @@ function StudioPortfolio() {
             </div>
 
             <div className="animate-clip-in relative h-[470px] sm:h-[560px] lg:col-span-5">
+              {/* Background watermark */}
+              <div className="pointer-events-none absolute -bottom-8 -right-6 select-none font-display text-[9rem] leading-none text-ink/[0.04] sm:text-[11rem]">
+                CLICK
+              </div>
+
+              {/* Top-left category badge */}
+              <div className="absolute -left-2 top-0 z-20 rotate-[-5deg] border-4 border-ink bg-signal px-4 py-3 shadow-[6px_6px_0px_0px_#090909] sm:left-0">
+                <p className="font-display text-2xl leading-none text-ink sm:text-3xl">GAMING + YOUTUBE</p>
+                <p className="mt-1 font-mono text-[9px] font-bold uppercase tracking-wider text-ink/80">Scroll-stopping thumbnails</p>
+              </div>
+
+              {/* Decorative play button */}
+              <div className="absolute right-0 top-4 z-0 flex size-24 -rotate-12 items-center justify-center rounded-full border-4 border-ink/10 text-ink/10 sm:size-32">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" className="ml-1 sm:size-12" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+
+              {/* Availability badge */}
+              <div className="absolute right-0 top-28 z-30 flex items-center gap-2 border-2 border-ink bg-chalk px-3 py-2 shadow-[4px_4px_0px_0px_#FFB000]">
+                <span className="relative flex size-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
+                  <span className="relative inline-flex size-2.5 rounded-full bg-signal" />
+                </span>
+                <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-ink">Open for projects</span>
+              </div>
+
+              {/* Cross accent */}
+              <div className="absolute left-[30%] top-[32%] z-0 opacity-25">
+                <div className="h-1 w-10 rotate-45 bg-signal" />
+                <div className="h-1 w-10 -translate-y-1 -rotate-45 bg-signal" />
+              </div>
+
               <div className="absolute bottom-10 left-0 z-10 w-[78%] -rotate-6 border-8 border-chalk bg-chalk shadow-2xl">
                 <img src={thumbnail6Asset.url} alt="Minecraft adventure thumbnail from the Studio Thumbcrafter portfolio" width={1280} height={720} className="aspect-video w-full object-cover" />
               </div>
