@@ -148,9 +148,9 @@ function StudioPortfolio() {
               </div>
 
               {/* Top-left category badge */}
-              <div className="absolute -left-2 top-0 z-20 rotate-[-5deg] border-4 border-ink bg-signal px-4 py-3 shadow-[6px_6px_0px_0px_#090909] sm:left-0">
-                <p className="font-display text-2xl leading-none text-ink sm:text-3xl">YOUTUBE THUMBNAIL</p>
-                <p className="mt-1 font-mono text-[9px] font-bold uppercase tracking-wider text-ink/80">Scroll-stopping thumbnails</p>
+              <div className="absolute -left-2 top-0 z-20 rotate-[-5deg] border-4 border-ink bg-signal px-5 py-4 shadow-[8px_8px_0px_0px_#090909] sm:left-0 sm:px-7 sm:py-5">
+                <p className="font-display text-4xl leading-none text-ink sm:text-5xl">YOUTUBE THUMBNAIL</p>
+                <p className="mt-2 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/80 sm:text-xs">Scroll-stopping thumbnails</p>
               </div>
 
               {/* Decorative play button */}
@@ -160,14 +160,6 @@ function StudioPortfolio() {
                 </svg>
               </div>
 
-              {/* Availability badge */}
-              <div className="absolute right-0 top-28 z-30 flex items-center gap-2 border-2 border-ink bg-chalk px-3 py-2 shadow-[4px_4px_0px_0px_#FFB000]">
-                <span className="relative flex size-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
-                  <span className="relative inline-flex size-2.5 rounded-full bg-signal" />
-                </span>
-                <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-ink">Open for projects</span>
-              </div>
 
               {/* Cross accent */}
               <div className="absolute left-[30%] top-[32%] z-0 opacity-25">
