@@ -7,9 +7,12 @@ import { getEmailJSConfig } from "@/lib/contact.functions";
 import { submitInquiry as saveInquiry } from "@/lib/inquiries.functions";
 
 import avatar from "@/assets/thumbcrafter-avatar.png";
-import setup from "@/assets/concept-setup.jpg";
-import showdown from "@/assets/concept-showdown.jpg";
-import survival from "@/assets/concept-survival.jpg";
+import thumbnail1Asset from "@/assets/portfolio-thumbnail-1.png.asset.json";
+import thumbnail2Asset from "@/assets/portfolio-thumbnail-2.png.asset.json";
+import thumbnail3Asset from "@/assets/portfolio-thumbnail-3.png.asset.json";
+import thumbnail4Asset from "@/assets/portfolio-thumbnail-4.png.asset.json";
+import thumbnail5Asset from "@/assets/portfolio-thumbnail-5.png.asset.json";
+import thumbnail6Asset from "@/assets/portfolio-thumbnail-6.png.asset.json";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -36,9 +39,12 @@ export const Route = createFileRoute("/")({
 type Category = "All" | "Gaming" | "YouTube" | "Other";
 
 const projects = [
-  { title: "Final Showdown", category: "Gaming" as const, ref: "CONCEPT_001", image: showdown, alt: "Concept artwork of a player facing a giant mechanical enemy" },
-  { title: "100 Days Below", category: "Gaming" as const, ref: "CONCEPT_002", image: survival, alt: "Concept artwork of a block-world explorer above a lava cavern" },
-  { title: "Setup Rebuilt", category: "YouTube" as const, ref: "CONCEPT_003", image: setup, alt: "Concept artwork showing a dramatic desk setup transformation" },
+  { title: "Rank Push Livestream", category: "Gaming" as const, ref: "WORK_001", image: thumbnail3Asset.url, alt: "Gaming livestream thumbnail with a fantasy game character and bold rank push title" },
+  { title: "Top 10 Conqueror", category: "Gaming" as const, ref: "WORK_002", image: thumbnail4Asset.url, alt: "Top 10 Conqueror gaming thumbnail with an illustrated character" },
+  { title: "Minecraft Team", category: "Gaming" as const, ref: "WORK_003", image: thumbnail5Asset.url, alt: "Minecraft gaming thumbnail featuring a team of colorful block characters" },
+  { title: "Minecraft Adventure", category: "Gaming" as const, ref: "WORK_004", image: thumbnail6Asset.url, alt: "Minecraft adventure thumbnail featuring a group of block characters on a floating island" },
+  { title: "Which One Is Better?", category: "YouTube" as const, ref: "WORK_005", image: thumbnail1Asset.url, alt: "YouTube comparison thumbnail asking which AI option is better" },
+  { title: "The Dark Truth", category: "YouTube" as const, ref: "WORK_006", image: thumbnail2Asset.url, alt: "YouTube commentary thumbnail titled The Dark Truth" },
 ];
 
 const services = [
@@ -142,11 +148,10 @@ function StudioPortfolio() {
                 <div className="bg-ink px-3 py-2 font-mono text-[9px] uppercase text-paper">Designer profile / no photo supplied</div>
               </div>
               <div className="absolute bottom-10 left-0 z-10 w-[78%] -rotate-6 border-8 border-chalk bg-chalk shadow-2xl">
-                <img src={showdown} alt="Gaming thumbnail concept featuring a futuristic boss fight" width={1280} height={720} className="aspect-video w-full object-cover" />
-                <span className="absolute left-2 top-2 bg-signal px-2 py-1 font-mono text-[9px] font-semibold">CONCEPT SAMPLE</span>
+                <img src={thumbnail6Asset.url} alt="Minecraft adventure thumbnail from the Studio Thumbcrafter portfolio" width={1280} height={720} className="aspect-video w-full object-cover" />
               </div>
               <div className="absolute bottom-28 right-0 w-[67%] rotate-6 border-8 border-chalk bg-chalk shadow-xl">
-                <img src={survival} alt="Gaming survival thumbnail concept" width={1280} height={720} className="aspect-video w-full object-cover" />
+                <img src={thumbnail3Asset.url} alt="Rank Push livestream thumbnail from the Studio Thumbcrafter portfolio" width={1280} height={720} className="aspect-video w-full object-cover" />
               </div>
             </div>
           </div>
@@ -176,10 +181,10 @@ function StudioPortfolio() {
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-12 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-5">
               <div className="min-w-0">
-                <p className="font-mono text-[10px] uppercase">Selected explorations / 02</p>
+                <p className="font-mono text-[10px] uppercase">Selected work / 02</p>
                 <h2 className="font-display text-6xl uppercase sm:text-8xl">Portfolio</h2>
               </div>
-              <span className="hidden max-w-48 text-right font-mono text-[10px] uppercase text-ink/50 sm:block">Concept studies ready to be replaced with commissioned work</span>
+              <span className="hidden max-w-48 text-right font-mono text-[10px] uppercase text-ink/50 sm:block">Gaming and creator thumbnails designed for visual impact</span>
             </div>
             <div className="mb-8 flex flex-wrap gap-1 border-y border-ink/15 py-3" role="group" aria-label="Filter portfolio">
               {(["All", "Gaming", "YouTube", "Other"] as Category[]).map((category) => (
@@ -192,7 +197,7 @@ function StudioPortfolio() {
                   <img src={project.image} alt={project.alt} width={1280} height={720} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span className="absolute right-3 top-3 bg-chalk px-2 py-1 font-mono text-[9px] text-ink">{project.ref}</span>
                   <div className="absolute inset-0 flex translate-y-full flex-col justify-end bg-signal/95 p-6 text-ink transition-transform duration-300 group-hover:translate-y-0 group-focus-within:translate-y-0">
-                    <p className="font-mono text-[10px] uppercase">Category: {project.category} / Placeholder</p>
+                    <p className="font-mono text-[10px] uppercase">Category: {project.category}</p>
                     <h3 className="mt-1 font-display text-4xl uppercase">{project.title}</h3>
                   </div>
                 </article>
