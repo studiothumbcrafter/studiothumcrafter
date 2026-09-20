@@ -149,7 +149,7 @@ function StudioPortfolio() {
 
               {/* Top-left category badge */}
               <div className="absolute -left-2 top-0 z-20 rotate-[-5deg] border-4 border-ink bg-signal px-4 py-3 shadow-[6px_6px_0px_0px_#090909] sm:left-0">
-                <p className="font-display text-2xl leading-none text-ink sm:text-3xl">GAMING + YOUTUBE</p>
+                <p className="font-display text-2xl leading-none text-ink sm:text-3xl">YOUTUBE THUMBNAIL</p>
                 <p className="mt-1 font-mono text-[9px] font-bold uppercase tracking-wider text-ink/80">Scroll-stopping thumbnails</p>
               </div>
 
