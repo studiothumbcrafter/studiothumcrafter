@@ -41,15 +41,15 @@ export const Route = createFileRoute("/")({
 type Category = "All" | "Gaming" | "YouTube" | "Other";
 
 const projects = [
+  { title: "Fast Food for 24 Hours", category: "YouTube" as const, ref: "WORK_007", image: fastFoodAsset.url, alt: "Food challenge thumbnail titled Fast Food for 24 Hours" },
+  { title: "100 Days Hardcore", category: "Gaming" as const, ref: "WORK_008", image: hardcoreAsset.url, alt: "Minecraft before-and-after thumbnail showing day one and day one hundred" },
+  { title: "We Got Trapped", category: "YouTube" as const, ref: "WORK_009", image: trappedAsset.url, alt: "Horror thumbnail titled We Got Trapped outside Longfellow School" },
   { title: "Rank Push Livestream", category: "Gaming" as const, ref: "WORK_001", image: thumbnail3Asset.url, alt: "Gaming livestream thumbnail with a fantasy game character and bold rank push title" },
   { title: "Top 10 Conqueror", category: "Gaming" as const, ref: "WORK_002", image: thumbnail4Asset.url, alt: "Top 10 Conqueror gaming thumbnail with an illustrated character" },
   { title: "Minecraft Team", category: "Gaming" as const, ref: "WORK_003", image: thumbnail5Asset.url, alt: "Minecraft gaming thumbnail featuring a team of colorful block characters" },
   { title: "Minecraft Adventure", category: "Gaming" as const, ref: "WORK_004", image: thumbnail6Asset.url, alt: "Minecraft adventure thumbnail featuring a group of block characters on a floating island" },
   { title: "Which One Is Better?", category: "YouTube" as const, ref: "WORK_005", image: thumbnail1Asset.url, alt: "YouTube comparison thumbnail asking which AI option is better" },
   { title: "The Dark Truth", category: "YouTube" as const, ref: "WORK_006", image: thumbnail2Asset.url, alt: "YouTube commentary thumbnail titled The Dark Truth" },
-  { title: "Fast Food for 24 Hours", category: "YouTube" as const, ref: "WORK_007", image: fastFoodAsset.url, alt: "Food challenge thumbnail titled Fast Food for 24 Hours" },
-  { title: "100 Days Hardcore", category: "Gaming" as const, ref: "WORK_008", image: hardcoreAsset.url, alt: "Minecraft before-and-after thumbnail showing day one and day one hundred" },
-  { title: "We Got Trapped", category: "YouTube" as const, ref: "WORK_009", image: trappedAsset.url, alt: "Horror thumbnail titled We Got Trapped outside Longfellow School" },
 ];
 
 const services = [
