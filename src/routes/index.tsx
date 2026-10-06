@@ -12,6 +12,9 @@ import thumbnail3Asset from "@/assets/portfolio-thumbnail-3.png.asset.json";
 import thumbnail4Asset from "@/assets/portfolio-thumbnail-4.png.asset.json";
 import thumbnail5Asset from "@/assets/portfolio-thumbnail-5.png.asset.json";
 import thumbnail6Asset from "@/assets/portfolio-thumbnail-6.png.asset.json";
+import fastFoodAsset from "@/assets/portfolio-fast-food-24-hours.jpg.asset.json";
+import hardcoreAsset from "@/assets/portfolio-100-days-hardcore.jpg.asset.json";
+import trappedAsset from "@/assets/portfolio-we-got-trapped.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -44,6 +47,9 @@ const projects = [
   { title: "Minecraft Adventure", category: "Gaming" as const, ref: "WORK_004", image: thumbnail6Asset.url, alt: "Minecraft adventure thumbnail featuring a group of block characters on a floating island" },
   { title: "Which One Is Better?", category: "YouTube" as const, ref: "WORK_005", image: thumbnail1Asset.url, alt: "YouTube comparison thumbnail asking which AI option is better" },
   { title: "The Dark Truth", category: "YouTube" as const, ref: "WORK_006", image: thumbnail2Asset.url, alt: "YouTube commentary thumbnail titled The Dark Truth" },
+  { title: "Fast Food for 24 Hours", category: "YouTube" as const, ref: "WORK_007", image: fastFoodAsset.url, alt: "Food challenge thumbnail titled Fast Food for 24 Hours" },
+  { title: "100 Days Hardcore", category: "Gaming" as const, ref: "WORK_008", image: hardcoreAsset.url, alt: "Minecraft before-and-after thumbnail showing day one and day one hundred" },
+  { title: "We Got Trapped", category: "YouTube" as const, ref: "WORK_009", image: trappedAsset.url, alt: "Horror thumbnail titled We Got Trapped outside Longfellow School" },
 ];
 
 const services = [
